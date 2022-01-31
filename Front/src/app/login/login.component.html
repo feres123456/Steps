@@ -1,0 +1,18 @@
+
+
+
+
+	
+	<div class="form-container sign-in-container">
+		<form action="#">
+			<h1>Sign in</h1>
+			<form [formGroup]="addform" (ngSubmit)="login()">
+			<input type="email" placeholder="Email"  name="email" formControlName="email" />
+			<input type="password" placeholder="Password"  name="password" formControlName="password"/>
+			<p class="loginfail">{{loginfail}}</p>
+			<p class="loginsuccesmsg">{{loginsuccesmsg}}</p>
+			<button class=" btn btn-primary" type="submit"  >Login</button>
+		    </form>
+		</form>
+
+	</div>

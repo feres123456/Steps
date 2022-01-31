@@ -1,0 +1,105 @@
+      
+   
+   <!-- Add new Authors------------------------>
+<!-- Button trigger modal  -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModaltypebooks">
+    ADD BOOKS TYPES
+  </button>
+<br>
+<br>
+
+  
+  <!-- Modal ADD new Authors-->
+  <div class="modal fade" id="exampleModaltypebooks" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Books</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form [formGroup]="addform"  (ngSubmit)="submitForm()">
+        <div class="modal-body">
+        <br>
+        <div>
+          <a>BOOKS TYPE</a><br>
+          <input type="text" placeholder="BOOKS TYPES" formControlName="name">
+        </div>
+        <br>
+    
+         <p class="typeadd">{{Employeesadd}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
+  
+      </div>
+    </div>
+  </div>
+  
+  
+  <!-- Authors List-->
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
+  
+  
+      
+      </tr>
+    </thead>
+    
+    <tbody *ngFor = "let items of collection  ; let index = index ">
+      <tr >
+        <th scope="row">{{index + 1}}</th>
+        <td>{{items.name}}</td>
+        <td>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalupdatetypebooks" (click)="updategetid(items._id)" >
+          Update 
+        </button>
+        <!-- Modal UPDATE Authors-->
+  <form [formGroup]="updateform" (ngSubmit)="updatetypebooks(items._id)" >
+    <div class="modal fade" id="exampleModalupdatetypebooks" >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Update</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+          <br>
+          <div>
+            <a>BOOKS TYPE</a><br>
+            <input type="text" placeholder="authors" formControlName="name">
+          </div>
+          <p class="typeadd">{{updateres}}</p>
+    
+          <br>
+      
+          </div>
+          <div class="modal-footer">
+  
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" >Save changes</button>
+          </div>
+    
+        </div>
+      </div>
+    </div>
+  </form>
+  
+      </td>
+      <td>
+        <button type="button" class="btn btn-danger" (click)="delete(items._id)" >Delete</button>
+  
+      </td>
+      </tr>
+
+    </tbody>
+  </table>
+  
+  

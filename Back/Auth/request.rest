@@ -1,0 +1,14 @@
+GET http://localhost:9000/home
+
+###
+
+POST http://localhost:9000/registre
+Content-Type: application/json
+
+{
+    "password" : "123456" ,
+    "name"  : "test" ,
+    "email"  : "test@gmail.com"
+}
+
+

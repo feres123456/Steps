@@ -1,0 +1,41 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container" id="container">
+
+    <app-login></app-login>
+    
+        <div class="form-container sign-up-container">
+            <form action="#">
+                <h1>Create Account</h1>
+             <form [formGroup]="addform" (ngSubmit)="register()" >
+                <input type="text" placeholder="Name"  name="name"  formControlName="name" />
+                <input type="email" placeholder="Email"  name="email" formControlName="email" required />
+                <input type="password" placeholder="Password"  name="password" formControlName="password"  />
+                <p class="msgerror">{{msgerror}}</p>
+                <p class="msgsuccess">{{msgsuccess}}</p>
+
+                <button class=" btn btn-primary1" type="submit"  >Create Account</button>		
+                </form>
+            </form>
+        </div>
+    
+    
+        
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button class="ghost" id="signIn">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Enter your personal details and start journey with us</p>
+                    <button class="ghost" id="signUp">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>

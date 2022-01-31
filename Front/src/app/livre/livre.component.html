@@ -1,0 +1,168 @@
+
+  <main id="main" data-aos="fade-in">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+      <div class="container">
+        <h2>Books</h2>
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+
+
+    
+
+    <br>
+    <br>
+
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  ADD Book
+</button>
+
+    <!-- ======= Courses Section ======= -->
+    <section id="courses" class="courses">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" *ngFor="let items of collection">
+            <div class="course-item" >
+              
+              <a href="http://localhost:9000/{{items.bookspdf}}" target="_blank"> <button  type="button" class="btn btn-outline-success btn-sm">Open Book</button> </a>
+
+              <div class="course-content">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h4> Name of the book : {{items.booksname}}</h4>
+                </div>
+
+                <h3><a > Author's Name : {{items.authorsname}}</a></h3>
+                <p> Type of the book : {{items.bookstype}}</p>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalupdatebooks" (click)="updategetid(items._id)">
+                  Update Book
+                </button>
+                <button type="button" class="btn btn-danger" (click)="deletebooks(items._id)">Delete</button>
+
+              
+              </div>
+            </div>
+          </div> <!-- End Course Item-->
+
+
+        </div>
+
+      </div>
+    </section><!-- End Courses Section -->
+
+  </main><!-- End #main -->
+
+ 
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Books</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form [formGroup]="form"  (ngSubmit)="submitForm()">
+      <div class="modal-body">
+        <div>
+        <a>Books name</a>  <br>
+        <input type="text" placeholder="books" formControlName="booksname" >
+      </div>
+      <br>
+      <div>
+        <a>Books PDF</a>  <br>
+        <input type="file" placeholder="books PDF" accept=".pdf" (change)="onFileSeletected($event)" >
+      </div>
+      <br>
+      
+      
+      <div>
+        <a>authors</a><br>
+        <select class="form-select" aria-label="Default select example"  (change)="onChange($event.target.value)">
+          <option selected disabled>Open this select menu</option>
+          <option *ngFor="let i of authorsname">{{i.name}}</option>
+        
+        </select>
+      </div>
+      <br>
+      
+      <div>
+        <a>Type of book</a><br>
+        <select class="form-select" aria-label="Default select example"  (change)="onChangetype($event.target.value)">
+          <option selected disabled>Open this select menu</option>
+          <option *ngFor="let i of collectiontypes">{{i.name}}</option>
+        
+        </select>
+      </div>
+      </div>
+      <p class="added">{{messageadded}}</p>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+    </form>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalupdatebooks" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Book</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form [formGroup]="updateform"  (ngSubmit)="submitupdateform()">
+      <div class="modal-body">
+        <div>
+        <a>New Books name</a>  <br>
+        <input type="text" placeholder="books" formControlName="booksname" >
+      </div>
+      <br>
+      <div>
+        <a>New Books PDF</a>  <br>
+        <input type="file" placeholder="books" accept=".pdf"  (change)="onFileSeletectedupdate($event)" >
+      </div>
+      <br>
+      
+      <div>
+        <a>New Authors</a><br>
+        <select class="form-select" aria-label="Default select example"  (change)="onChangeupdate($event.target.value)">
+          <option selected disabled>Open this select menu</option>
+          <option *ngFor="let i of authorsname">{{i.name}}</option>
+        
+        </select>
+      </div>
+      <br>
+      
+      <div>
+        <a>New Type of book</a><br>
+        <select class="form-select" aria-label="Default select example"  (change)="onChangetypeupdate($event.target.value)">
+          <option selected disabled>Open this select menu</option>
+          <option *ngFor="let i of collectiontypes">{{i.name}}</option>
+        
+        </select>
+      </div>
+      </div>
+      <p class="added">{{messagrupdated}}</p>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+    </form>
+
+    </div>
+  </div>
+</div>
+

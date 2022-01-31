@@ -1,0 +1,111 @@
+
+  <main id="main" data-aos="fade-in">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+      <div class="container">
+        <h2>Employees</h2>
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+  </main>
+    <br>
+    <br>
+     
+<h1>Users List</h1>
+<!-- Users List-->
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">ADD to Employees List</th>
+      <th scope="col">ADD to ADMIN List</th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor = "let items of listusers  ; let index = index ">
+      <th scope="row">{{index + 1}}</th>
+      <td>{{items.name}}</td>
+      <td>{{items.email}}</td>
+      <td><button (click)="addemployees(items._id)">ADD to Employees</button></td>
+      <td><button (click)="addadmin(items._id)">ADD ADMIN</button></td>
+
+
+
+      
+    </tr>
+  
+  </tbody>
+</table>
+
+
+
+
+<br>
+<br>
+<br>
+<h1>Employees List</h1>
+<!-- Employees List-->
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Delete Employees Stat</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor = "let items of listusers  ; let index = index ">
+      <td *ngIf="items?.employees === 'true' ">{{items.name}}</td>
+      <td *ngIf="items?.employees === 'true' ">{{items.email}}</td>
+      <td *ngIf="items?.employees === 'true' "><button (click)="Delete(items._id)">Delete Employees Stat</button></td>
+
+
+      
+    </tr>
+  
+  </tbody>
+</table>
+
+
+
+
+
+
+<br>
+<br>
+<br>
+<h1>ADMIN List</h1>
+<!-- ADMIN List-->
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Delete ADMIN Stat</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor = "let items of listusers  ; let index = index ">
+      <td *ngIf="items?.admin === 'true' ">{{items.name}}</td>
+      <td *ngIf="items?.admin === 'true' ">{{items.email}}</td>
+      <td *ngIf="items?.admin === 'true' "><button (click)="Deleteadmin(items._id)">Delete ADMIN Stat</button></td>
+
+
+      
+    </tr>
+  
+  </tbody>
+</table>
+
+
+
+
+
+

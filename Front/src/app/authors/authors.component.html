@@ -1,0 +1,124 @@
+
+  <main id="main" data-aos="fade-in">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+      <div class="container">
+        <h2>Authors / Books Type</h2>
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+  </main>
+    <br>
+    <br>
+        
+   <!-- Add new Authors------------------------>
+<!-- Button trigger modal  -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  ADD Authors
+</button>
+<br>
+<br>
+
+
+<!-- Modal ADD new Authors-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Books</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form [formGroup]="addform"  (ngSubmit)="submitForm()">
+      <div class="modal-body">
+      <br>
+      <div>
+        <a>Full Name</a><br>
+        <input type="text" placeholder="authors" formControlName="name">
+      </div>
+      <br>
+  
+       <p class="authorsadd">{{Employeesadd}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+    </form>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Authors List-->
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Update</th>
+      <th scope="col">Delete</th>
+
+
+    
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor = "let items of collection  ; let index = index ">
+      <th scope="row">{{index + 1}}</th>
+      <td>{{items.name}}</td>
+      <td>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalupdate" (click)="updategetid(items._id)" >
+        Update 
+      </button>
+    </td>
+    <td>
+      <button type="button" class="btn btn-danger" (click)="delete(items._id)" >Delete</button>
+<!-- Modal UPDATE Authors-->
+<div class="modal fade" id="exampleModalupdate" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form [formGroup]="updateform" (ngSubmit)="updateauthors(items._id)" >
+      <div class="modal-body">
+      <br>
+      <div>
+        <a>Full Name</a><br>
+        <input type="text" placeholder="authors" formControlName="name">
+      </div>
+      <p class="authorsadd">{{updateres}}</p>
+
+      <br>
+  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+    </form>
+
+    </div>
+  </div>
+</div>
+    </td>
+    </tr>
+  
+  </tbody>
+</table>
+
+
+
+<br>
+<br>
+<br>
+
+  
+<app-bookstype></app-bookstype>
+
+
+
+
